@@ -1,0 +1,561 @@
+/* =========================================================================
+   Balneário Pinhal — dossiê digital da cidade
+   Sistema visual: editorial, tipo revista de tendências, com identidade
+   local (mel, pinheiral, mar) em vez do clichê turquesa de folder de praia.
+   ========================================================================= */
+
+:root {
+  --ink: #16231c;
+  --ink-soft: #24352b;
+  --paper: #fbf8f1;
+  --sand: #f1ead8;
+  --line-on-sand: rgba(22, 35, 28, 0.16);
+  --line-on-ink: rgba(251, 248, 241, 0.18);
+  --honey: #e3a23c;
+  --honey-deep: #b97a1f;
+  --teal: #3c7d76;
+  --text-on-ink: #f2ede1;
+  --text-on-ink-dim: rgba(242, 237, 225, 0.68);
+  --text-on-sand: #1c2b21;
+  --text-on-sand-dim: rgba(28, 43, 33, 0.66);
+
+  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+  --sans: "Inter", "Segoe UI", sans-serif;
+
+  --max: 74rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--text-on-sand);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.05;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+:focus-visible {
+  outline: 2px solid var(--honey);
+  outline-offset: 3px;
+}
+
+/* ---------- Header --------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(22, 35, 28, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line-on-ink);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--text-on-ink);
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.brand strong {
+  font-weight: 600;
+}
+
+.brand span {
+  color: var(--text-on-ink-dim);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(0.9rem, 2vw, 1.6rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--text-on-ink-dim);
+  text-decoration: none;
+  font-size: 0.86rem;
+}
+
+.site-nav a:hover {
+  color: var(--honey);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .site-nav {
+    display: none;
+  }
+}
+
+/* ---------- Hero ------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  background: var(--ink);
+  color: var(--text-on-ink);
+  overflow: hidden;
+}
+
+.hero .container {
+  position: relative;
+  padding-top: clamp(3rem, 8vw, 5.5rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.9fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
+}
+
+.hero-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+.hero-kicker {
+  font-size: 0.82rem;
+  color: var(--honey);
+  margin-bottom: 1rem;
+  max-width: 30rem;
+  line-height: 1.4;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  letter-spacing: -0.01em;
+}
+
+.hero .standfirst {
+  margin-top: 1.3rem;
+  max-width: 34rem;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--text-on-ink-dim);
+}
+
+.dossier-card {
+  background: rgba(251, 248, 241, 0.05);
+  border: 1px solid var(--line-on-ink);
+  padding: 1.5rem 1.6rem;
+  font-size: 0.88rem;
+}
+
+.dossier-card .file-no {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--honey);
+  font-size: 0.85rem;
+  margin-bottom: 0.9rem;
+  display: block;
+}
+
+.dossier-card dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.55rem 1rem;
+}
+
+.dossier-card dt {
+  color: var(--text-on-ink-dim);
+}
+
+.dossier-card dd {
+  margin: 0;
+  text-align: right;
+}
+
+/* ---------- Section shell --------------------------------------------- */
+
+.section {
+  padding-top: clamp(3rem, 7vw, 5rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.section--sand {
+  background: var(--sand);
+  color: var(--text-on-sand);
+}
+
+.section--ink {
+  background: var(--ink);
+  color: var(--text-on-ink);
+}
+
+.section--feature {
+  background: linear-gradient(160deg, var(--honey-deep), var(--honey) 65%);
+  color: #241505;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  align-items: end;
+}
+
+.section-head h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+}
+
+.section-head .lede {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.82;
+  max-width: 34rem;
+}
+
+@media (max-width: 760px) {
+  .section-head {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- "A cidade" narrative --------------------------------------- */
+
+.narrative {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.narrative p + p {
+  margin-top: 1.1rem;
+}
+
+.narrative p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.pull-fact {
+  border-left: 3px solid var(--honey-deep);
+  padding-left: 1.2rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.4;
+  align-self: start;
+}
+
+.pull-fact cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--text-on-sand-dim);
+}
+
+@media (max-width: 760px) {
+  .narrative {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Números (dossier rows, não cards) -------------------------- */
+
+.numbers-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-on-ink);
+}
+
+.numbers-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8rem minmax(0, 1.4fr);
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line-on-ink);
+}
+
+.numbers-list .rotulo {
+  font-size: 0.95rem;
+  color: var(--text-on-ink-dim);
+}
+
+.numbers-list .valor {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  color: var(--honey);
+  text-align: right;
+}
+
+.numbers-list .contexto {
+  font-size: 0.85rem;
+  color: var(--text-on-ink-dim);
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .numbers-list li {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .numbers-list .valor {
+    text-align: left;
+  }
+}
+
+/* ---------- Pontos turísticos ------------------------------------------ */
+
+.poi-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.poi-list li {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1.75rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line-on-sand);
+}
+
+.poi-list li:last-child {
+  border-bottom: 1px solid var(--line-on-sand);
+}
+
+.poi-tag {
+  font-size: 0.78rem;
+  color: var(--teal);
+}
+
+.poi-tag .distrito {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--text-on-sand-dim);
+}
+
+.poi-body h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+
+.poi-body p {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--text-on-sand-dim);
+  max-width: 40rem;
+}
+
+@media (max-width: 640px) {
+  .poi-list li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ---------- Mel & mascotes (feature band) ------------------------------ */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.feature-grid h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+.feature-grid .lede {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  max-width: 32rem;
+}
+
+.mascots {
+  display: flex;
+  gap: 1rem;
+}
+
+.mascot-badge {
+  background: rgba(36, 21, 5, 0.1);
+  border: 1px solid rgba(36, 21, 5, 0.28);
+  padding: 1.1rem 1.2rem;
+  flex: 1;
+}
+
+.mascot-badge h4 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  margin: 0 0 0.4rem;
+}
+
+.mascot-badge p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Distritos --------------------------------------------------- */
+
+.districts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.district h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+
+.district .criacao {
+  font-size: 0.78rem;
+  color: var(--text-on-sand-dim);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.district p {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--text-on-sand-dim);
+}
+
+@media (max-width: 760px) {
+  .districts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Curiosidades (marginalia) ----------------------------------- */
+
+.marginalia {
+  columns: 2;
+  column-gap: clamp(2rem, 5vw, 4rem);
+}
+
+.marginalia .entry {
+  break-inside: avoid;
+  margin-bottom: 1.8rem;
+}
+
+.marginalia h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.12rem;
+  margin-bottom: 0.4rem;
+  color: var(--honey);
+}
+
+.marginalia p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-on-ink-dim);
+}
+
+@media (max-width: 700px) {
+  .marginalia {
+    columns: 1;
+  }
+}
+
+/* ---------- Footer ------------------------------------------------------- */
+
+.site-footer {
+  background: #101a14;
+  color: var(--text-on-ink-dim);
+  padding: 2.5rem 0;
+  font-size: 0.82rem;
+}
+
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer a {
+  color: var(--honey);
+  text-decoration: none;
+}
+
+/* ---------- Loading state placeholders ------------------------------------ */
+
+.loading {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  font-style: italic;
+}
