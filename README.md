@@ -43,19 +43,4 @@ Para adicionar ou corrigir um dado, basta editar as listas em
 `Dados/AcervoCidade.cs` — o front-end atualiza sozinho, sem precisar mexer
 no HTML.
 
-## Sobre o design
 
-Você pediu o site "futurist.com" (Futurist.com, o site/blog de futurismo e
-tendências de Glen Hiemstra) como referência máxima. Não copiei o layout
-dele diretamente — reproduzir o design de outro site levantaria questão de
-direitos autorais, e a página é essencialmente um blog de artigos, sem um
-sistema visual fixo para "clonar". Em vez disso, usei o espírito do site
-(editorial, tipo revista de tendências, confiante, com bastante texto bem
-tipografado) como inspiração e criei uma identidade própria para Balneário
-Pinhal: um "dossiê" com tipografia serifada (Fraunces) para títulos, texto
-em Inter, paleta baseada na identidade local — verde-pinheiral escuro,
-areia, mel e um teal de água — em vez do azul-turquesa clichê de folder de
-praia.
-
-Se você quiser, posso ajustar cores, seções ou trazer fotos reais da cidade
-depois.
